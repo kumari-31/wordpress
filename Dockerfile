@@ -1,11 +1,11 @@
-ARG LOCAL_PHP=latest
-FROM wordpressdevelop/php:${LOCAL_PHP}
+FROM wordpress:6.4-php8.2-apache
 
-ARG LOCAL_PHP
+# Copy your local WordPress files (plugins, themes, etc.) into the image
+COPY . /var/www/html/
 
-COPY . /var/www
-
-# Set the working directory
-WORKDIR /var/www
+# Fix permissions so the web server user (www-data) can read/write
+RUN chown -R www-data:www-data /var/www/html \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
+    && find /var/www/html -type f -exec chmod 644 {} \;
 
 EXPOSE 80

@@ -8,4 +8,4 @@ COPY . /var/www
 # Set the working directory
 WORKDIR /var/www
 
-EXPOSE 8530
+EXPOSE 80

@@ -3,8 +3,7 @@ pipeline {
     agent any
     
     environment {
-        IMAGE_TAG = "${BUILD_NUMBER}"
-        REGISTRY_CREDENTIALS = credentials('docker-credentials')
+        IMAGE_TAG = "${BUILD_NUMBER}
     }
     
     stages {

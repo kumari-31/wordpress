@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'wordpress-password', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh '''
+                        sh """
                             git config user.email "skumari@cdac.in"
                             git config user.name "kumari-31"
                             cat files/deploy.yaml
@@ -61,7 +61,7 @@ pipeline {
                             git commit -m 'Updated the deploy yaml | Pipeline'
                             git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/kumari-31/wordpress1.git
                             git push origin HEAD:main
-                        '''                        
+                        """                     
                     }
                 }
             }

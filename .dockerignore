@@ -1,0 +1,12 @@
+.git
+.svn
+.hg
+.idea
+.vscode
+.DS_Store
+*.log
+npm-debug.log
+node_modules/
+tests/
+bin/
+docs/

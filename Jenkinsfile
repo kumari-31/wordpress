@@ -30,11 +30,13 @@ pipeline {
         stage('Push the artifacts'){
             steps{
                 script{
-                    sh '''
-                        echo 'Push to Repo'
-                        echo "$REGISTRY_CREDENTIALS_PSW" | docker login -u "$REGISTRY_CREDENTIALS_USR" --password-stdin
-                        docker push kumari3123/wordpress:${BUILD_NUMBER}
-                    '''
+					withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'REGISTRY_CREDENTIALS_PSW', usernameVariable: 'REGISTRY_CREDENTIALS_USR')]) {
+                        sh '''
+                            echo 'Push to Repo'
+                            echo "$REGISTRY_CREDENTIALS_PSW" | docker login -u "$REGISTRY_CREDENTIALS_USR" --password-stdin
+                            docker push kumari3123/wordpress:${BUILD_NUMBER}
+                        '''
+					}
                 }
             }
         }

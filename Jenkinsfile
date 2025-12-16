@@ -19,7 +19,7 @@ pipeline {
                 script{
                     sh '''
                         echo 'Buid Docker Image'
-                        docker build -t kumari3123/wordpress:${BUILD_NUMBER} .
+                        docker build -t kumari3123/wordpress-custom:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
                         sh '''
                             echo 'Push to Repo'
                             echo "$REGISTRY_CREDENTIALS_PSW" | docker login -u "$REGISTRY_CREDENTIALS_USR" --password-stdin
-                            docker push kumari3123/wordpress:${BUILD_NUMBER}
+                            docker push kumari3123/wordpress-custom:${BUILD_NUMBER}
                         '''
 					}
                 }
@@ -55,7 +55,7 @@ pipeline {
                             git config user.email "skumari@cdac.in"
                             git config user.name "kumari-31"
                             cat files/deploy.yaml
-                            sed -i "s/\\(kumari3123\\/wordpress:\\)[0-9]\\+/\\1${BUILD_NUMBER}/g" files/deploy.yaml
+                            sed -i "s/\\(kumari3123\\/wordpress-custom:\\)[0-9]\\+/\\1${BUILD_NUMBER}/g" files/deploy.yaml
                             cat files/deploy.yaml
                             git add files/deploy.yaml
                             git commit -m 'Updated the deploy yaml | Pipeline'

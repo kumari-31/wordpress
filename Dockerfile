@@ -1,7 +1,7 @@
 FROM wordpress:6.4-php8.2-apache
 
 # Copy your local WordPress files (plugins, themes, etc.) into the image
-COPY src/ /var/www/html/
+COPY src/wp-content/themes/twentytwentyfour/ /var/www/html/
 
 # Fix permissions so the web server user (www-data) can read/write
 RUN chown -R www-data:www-data /var/www/html \

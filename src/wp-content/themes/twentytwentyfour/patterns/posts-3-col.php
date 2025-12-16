@@ -23,6 +23,7 @@
 
 		<!-- wp:group {"style":{"spacing":{"blockGap":"10px","margin":{"top":"var:preset|spacing|20"},"padding":{"top":"0"}}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap"}} -->
 		<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--20);padding-top:0">
+			<p style="color: red; font-weight: bold;">HELLO LAKSHMI! This is my CI/CD Pipeline Test.</p>
 			<!-- wp:post-title {"isLink":true,"style":{"layout":{"flexSize":"min(2.5rem, 3vw)","selfStretch":"fixed"}},"fontSize":"large"} /-->
 
 			<!-- wp:template-part {"slug":"post-meta"} /-->

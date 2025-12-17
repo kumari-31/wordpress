@@ -204,3 +204,12 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
+
+/**
+ * CI/CD Pipeline Success Banner
+ */
+add_action('wp_body_open', function() {
+    echo '<div style="background: yellow; color: red; font-weight: bold; text-align: center; padding: 15px; border-bottom: 5px solid red; font-size: 24px; position: relative; z-index: 9999;">';
+    echo 'HELLO LAKSHMI! CI/CD PIPELINE SUCCESS';
+    echo '</div>';
+});
